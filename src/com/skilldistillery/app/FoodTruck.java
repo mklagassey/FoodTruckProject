@@ -1,24 +1,18 @@
 package com.skilldistillery.app;
 
 public class FoodTruck {
-	// TODO - 4 fields: truckName, foodType, userRating, truckId
-	private static int numberOfTrucks;
+	private static int numberOfTrucks = 1;
 	private String truckName;
 	private String foodType;
 	private int userRating;
 	private int truckId;
 
-	// TODO - constructors: 1 no-arg and 1 with name, food type and rating fields with auto-assigned id
+	// No-arg constructor
 	public FoodTruck() {
-
+		this.truckId = numberOfTrucks;
+		numberOfTrucks++;
 	}
-
-//	public FoodTruck(String tName, String fType, int uRating) {
-//		truckName = tName;
-//		foodType = fType;
-//		userRating = uRating;
-//	}
-
+	// Standard constructor with user input fields and auto-assigned internal ID
 	public FoodTruck(String truckName, String foodType, int userRating) {
 		this.truckName = truckName;
 		this.foodType = foodType;
@@ -27,7 +21,7 @@ public class FoodTruck {
 		numberOfTrucks++;
 	}
 
-	// TODO - getters/setters for fields
+	// Getters and setters for user-facing fields
 	public String getTruckName() {
 		return truckName;
 	}
@@ -51,15 +45,13 @@ public class FoodTruck {
 	public void setUserRating(int userRating) {
 		this.userRating = userRating;
 	}
+	public int getTruckId() {
+		return truckId;
+	}
 
 	// TODO - way to print out truck info
 
 	
-
-//	public void pseudoClearScreen() {
-//		for (int i = 0; i < 50; ++i)
-//			System.out.println();
-//	}
 
 	public String toString() {
 		return "FoodTruck [truckName=" + truckName + ", foodType=" + foodType + ", userRating=" + userRating

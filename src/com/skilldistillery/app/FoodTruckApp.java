@@ -60,75 +60,177 @@ public class FoodTruckApp {
 			foodType = scan.next(); // TODO - Validate input
 			System.out.println("Please enter the rating of the truck (1-5): ");
 			rating = scan.nextInt(); // TODO - Validate input
-			
+
 			FoodTruck truck = new FoodTruck(name, foodType, rating);
-			trucks[count] = truck;
-//			for (FoodTruck foodTruck : trucks) {
-//				System.out.println(foodTruck);
-//			}
-			count++;
+			count = truck.getTruckId();
+			trucks[count - 1] = truck;
 
 		} while (count < MAX_REVIEW_COUNT);
 		return count;
 	}
+	
 
 	public void mainMenu(int reviewCount) {
 		boolean continueApp = true;
 
 		while (continueApp) {
-			pseudoClearScreen();
-			System.out.println("Please choose an option: ");
-			System.out.println("1) List all food trucks");
-			System.out.println("2) Show average rating of trucks");
-			System.out.println("3) Show highest rated truck");
-			System.out.println("4) Quit");
-			int choice = scan.nextInt();
+
+			int choice = getMenuChoice();
 
 			switch (choice) {
 			case 1:
-				for (int i = 0; i < reviewCount; i++) {
-					System.out.println(trucks[i]);
-				}
-				System.out.println("Please press 1 to continue------->");
-				scan.next();
+				displayAllTrucks(reviewCount);
 				break;
 			case 2:
-				int totalScore = 0;
-				for (int i = 0; i < reviewCount; i++) {
-					totalScore += (trucks[i].getUserRating());
-				}
-				int averageScore = (totalScore / reviewCount);
-				System.out.print("Average: " + averageScore);
-				System.out.println();
-				System.out.println("Please press 1 to continue------->");
-				scan.next();
+				displayAvgRating(reviewCount);
 				break;
 			case 3:
-				int highScore = 0;
-				int truckIndex = 0;
-				System.out.println("Highest user rating: ");
-				for (int i = 0; i < reviewCount; i++) {
-					if (trucks[i].getUserRating() > highScore) {
-						truckIndex = i;
-						highScore = trucks[i].getUserRating();
-					}
-
-				}
-				System.out.println(trucks[truckIndex]);
-				System.out.println("Please press 1 to continue------->");
-				scan.next();
+				displayBestTruck(reviewCount);
 				break;
 			case 4:
 				continueApp = false;
 				break;
 			default:
-				System.out.println("ERROR! Invalid input, please try again.");
-				System.out.println("Please press 1 to continue------->");
-				scan.next();
+				displayErrorMsg();
 				break;
 			}
 		}
-		System.out.println("Thank you for using the Food Truck app, please follow us on social media!");
+		displayOutroMsg();
+//		pseudoClearScreen();
+//		System.out.println("Thank you for using the Food Truck app. \n"
+//				+ "Please follow us on Friendster and Myspace for the latest updates \n"
+//				+ "or message us on ICQ or AOL Instant Messenger for exclusive deals!");
 	}
 
+	public int getMenuChoice() {
+		pseudoClearScreen();
+		System.out.println("Please choose an option: ");
+		System.out.println("1) List all food trucks");
+		System.out.println("2) Show average rating of trucks");
+		System.out.println("3) Show highest rated truck");
+		System.out.println("4) Quit");
+		return scan.nextInt();
+	}
+	public void displayAllTrucks(int rCount) {
+		for (int i = 0; i < rCount; i++) {
+			System.out.println(trucks[i]);
+		}
+		System.out.println("Please enter 0 to continue------->");
+		scan.next();
+	}
+	public void displayAvgRating(int rCount) {
+		int totalScore = 0;
+		for (int i = 0; i < rCount; i++) {
+			totalScore += (trucks[i].getUserRating());
+		}
+		double averageScore = ((double)totalScore / (double)rCount);
+		System.out.print("Average: " + averageScore);
+		System.out.println();
+		System.out.println("Please enter 0 to continue------->");
+		scan.next();
+	}
+	public void displayBestTruck(int rCount) {
+		int highScore = 0;
+		int truckIndex = 0;
+		System.out.println("Highest user rating: ");
+		for (int i = 0; i < rCount; i++) {
+			if (trucks[i].getUserRating() > highScore) {
+				truckIndex = i;
+				highScore = trucks[i].getUserRating();
+			}
+			
+		}
+		System.out.println(trucks[truckIndex]);
+		System.out.println("Please enter 0 to continue------->");
+		scan.next();
+	}
+	public void displayErrorMsg() {
+		System.out.println("ERROR! Invalid input, please try again.");
+		System.out.println("Please enter 0 to continue------->");
+		scan.next();
+	}
+	public void displayOutroMsg() {
+		pseudoClearScreen();
+		System.out.println("Thank you for using the Food Truck app. \n"
+				+ "Please follow us on Friendster and Myspace for the latest updates \n"
+				+ "or message us on ICQ or AOL Instant Messenger for exclusive deals!");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
