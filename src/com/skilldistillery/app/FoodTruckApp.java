@@ -7,28 +7,10 @@ public class FoodTruckApp {
 	static Scanner scan = new Scanner(System.in);
 	// Constant for maximum allowed reviews
 	private final int MAX_REVIEW_COUNT = 5;
-	// Aggregates all reviews
+	// Aggregates all reviews into a "database"
 	private FoodTruck[] trucks = new FoodTruck[MAX_REVIEW_COUNT];
 
 	public static void main(String[] args) {
-		// TODO - ask user for name, food type and rating
-		// TODO - instantiate new truck object with info from user
-		// TODO - add truck object to reviewArray
-		// TODO - increment review count ++
-		// TODO - check if max review count is reached, if not, repeat add truck
-		// procedure
-		// TODO - if max review count reached or "quit" is entered, break add truck
-		// loop, enter main menu
-		// TODO - display main menu with 4 options: list all, avg rating, highest rated
-		// or quit
-		// TODO - if list all: display all trucks in reviewArray, return to main menu on
-		// enter
-		// TODO - if avg rating: calculate avg with ratings from each truck / num of
-		// trucks, enter to return to main menu
-		// TODO - if highest rated: find highest rating and display all truck info,
-		// return to main menu
-		// TODO - if quit: break loop, display outro msg
-
 		int reviewCount;
 		// Instantiate review process object
 		FoodTruckApp newReview = new FoodTruckApp();
@@ -55,9 +37,9 @@ public class FoodTruckApp {
 			System.out.println("Please enter name of food truck: ");
 			name = scan.next(); // TODO - Validate input
 			if (name.equalsIgnoreCase("quit"))
-				break;
+				break;	
 			System.out.println("Please enter type of food served: ");
-			foodType = scan.next(); // TODO - Validate input
+			foodType = scan.next(); // TODO - Validate input		
 			System.out.println("Please enter the rating of the truck (1-5): ");
 			rating = scan.nextInt(); // TODO - Validate input
 
@@ -96,10 +78,6 @@ public class FoodTruckApp {
 			}
 		}
 		displayOutroMsg();
-//		pseudoClearScreen();
-//		System.out.println("Thank you for using the Food Truck app. \n"
-//				+ "Please follow us on Friendster and Myspace for the latest updates \n"
-//				+ "or message us on ICQ or AOL Instant Messenger for exclusive deals!");
 	}
 
 	public int getMenuChoice() {

@@ -51,11 +51,9 @@ public class FoodTruck {
 
 	// TODO - way to print out truck info
 
-	
 
 	public String toString() {
-		return "FoodTruck [truckName=" + truckName + ", foodType=" + foodType + ", userRating=" + userRating
-				+ ", truckId=" + truckId + "]";
+		return "Truck name: " + truckName + ", Type of food: " + foodType + ", Rating: " + userRating;
 	}
 
 }
